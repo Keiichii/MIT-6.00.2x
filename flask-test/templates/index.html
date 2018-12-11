@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block heading %}
+From Template...
+<h1>{{ headline }}</h1>
+{% endblock %}
+
+{% block body %}
+{% if test %}
+<h2> Test is {{ test }}</h2>
+{% else %}
+<h1>  No test </h1>
+{% endif %}
+<h3>Names</h3>
+{% for name in names %}
+<li>{{ name }}</li>
+{% endfor %}
+
+<h3>Notes</h3>
+{% for note in notes %}
+<li>{{ note }}</li>
+{% endfor %}
+
+
+<div>
+    <a href="{{ url_for('more') }}">See more...</a>
+</div>
+
+    <p>
+        <form action="{{ url_for('form') }}" method="post">
+            <input type="text" name="name" placeholder="Type your name">
+            <button>Submit</button>
+        </form>
+    </p>
+
+
+    <p>Add a note:<br>
+        <form action="{{ url_for('hello_world') }}" method="post">
+            <input type="text" name="note" placeholder="Type note">
+            <button>Add note</button>
+        </form>
+    </p>
+{% endblock %}
